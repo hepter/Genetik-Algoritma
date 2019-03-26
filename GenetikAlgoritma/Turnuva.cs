@@ -120,25 +120,9 @@ namespace GenetikAlgoritma
 
 
 
-        public double Formul(List<Canli> canliList)
+        public Canli BestCanli(List<Canli> canliList)
         {
-            double best=0;
-            foreach (Canli canli in canliList)
-            {
-
-                if (best == 0)
-                {
-                    best = canli.Gen.MatyasFormulSkor;
-                    continue;
-                }
-
-                if (canli.Gen.MatyasFormulSkor<best)
-                {
-                    best = canli.Gen.MatyasFormulSkor;
-                }
-
-            }
-            return best;
+            return canliList.OrderBy(a=>a.Gen.MatyasFormulSkor).FirstOrDefault();
         }
     }
 }
