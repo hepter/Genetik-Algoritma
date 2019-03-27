@@ -31,7 +31,7 @@ namespace GenetikAlgoritma
 
         public List<Canli> Olustur(int populasyon)
         {
-            Random rnd = new Random();
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
             List<Canli> pop= new List<Canli>();
             for (int i = 0; i < populasyon; i++)
             {

@@ -22,6 +22,7 @@ namespace GenetikAlgoritma
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
             this.chart1.Series.Clear();
  
             this.chart1.Titles.Add("Total Income");
@@ -43,14 +44,32 @@ namespace GenetikAlgoritma
 
         public List<int> TurnuvaSecimi(List<int> list)
         {
-            Random rnd= new Random();
+            Random rnd= new Random(Guid.NewGuid().GetHashCode());
             return null;
         }
+        Random rndColor = new Random(Guid.NewGuid().GetHashCode());
 
+        public void drawPoint(int x, int y)
+        {
+            Graphics g = Graphics.FromHwnd(pictureBox1.Handle);
+
+            SolidBrush brush = new SolidBrush(Color.FromArgb(rndColor.Next(0,255),rndColor.Next(0,255),rndColor.Next(0,255)));
+           
+            Point dPoint = new Point(x, (pictureBox1.Height - y));
+            dPoint.X = dPoint.X - 2;
+            dPoint.Y = dPoint.Y - 2;
+
+            g.FillCircle(brush,dPoint.X, dPoint.Y, 3);
+            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, 3);
+            //Rectangle rect = new Rectangle(dPoint, new Size(4, 4));
+            //g.FillRectangle(brush, rect);
+            g.Dispose();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
             label11.Text = "Toplam:0";
+            pictureBox1.Image = Properties.Resources.matyas;
 
             List<Canli> liste = new Canli().Olustur((int)numericUpDown1.Value);
             List<Canli> elitizm=new List<Canli>();
@@ -70,7 +89,11 @@ namespace GenetikAlgoritma
                 liste = t.Mutasyon(liste,(double)numericUpDown3.Value);
                 liste.AddRange(elitizm);
                 Canli canli = t.BestCanli(liste);
-                ElitizmListeyeEkle(canli);
+                
+                if (ElitizmListeyeEkle(canli))
+                {
+                   Render(liste);
+                } 
                 series.Points.AddXY(j, canli.Gen.MatyasFormulSkor * 10);
 
                 elitizm=liste.OrderBy(a=>a.Gen.MatyasFormulSkor).Take((int)numericUpDown5.Value).ToList();
@@ -82,14 +105,27 @@ namespace GenetikAlgoritma
             chart1.ResumeLayout();
         }
         Stopwatch w;
+        public void Render(List<Canli> c)
+        {
+           
+            pictureBox1.SuspendLayout();
+            foreach (Canli canli in c)
+            {
+                int x = (int)((double) ((canli.Gen.x1 + 10) / 20) * (pictureBox1.Width - 50));
+                int y = (int)((double) ((canli.Gen.x2 + 10) / 20) * (pictureBox1.Height - 60));
+                drawPoint(x+25,y+30);
+            }
+            pictureBox1.ResumeLayout();
 
-        public void ElitizmListeyeEkle(Canli c)
+        }
+        public bool ElitizmListeyeEkle(Canli c)
         {
             foreach (var elitizm in flowLayoutPanel1.Controls.OfType<ElitizmComponent>())
                 if (c.Gen.MatyasFormulSkor == elitizm.Canli.Gen.MatyasFormulSkor) 
-                    return;
+                    return false;
             label11.Text = "Toplam:"+ (flowLayoutPanel1.Controls.Count + 1);
             flowLayoutPanel1.Controls.Add(new ElitizmComponent(c,flowLayoutPanel1.Controls.Count+1));
+            return true;
         }
         public void bekle(int ms)
         {
@@ -105,6 +141,32 @@ namespace GenetikAlgoritma
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            drawPoint(25,30);
+        }
+    }
+    public static class GraphicsExtensions
+    {
+        public static void DrawCircle(this Graphics g, Pen pen,
+            float centerX, float centerY, float radius)
+        {
+            g.DrawEllipse(pen, centerX - radius, centerY - radius,
+                radius + radius, radius + radius);
+        }
+
+        public static void FillCircle(this Graphics g, Brush brush,
+            float centerX, float centerY, float radius)
+        {
+            g.FillEllipse(brush, centerX - radius, centerY - radius,
+                radius + radius, radius + radius);
         }
     }
    
