@@ -29,7 +29,6 @@ namespace GenetikAlgoritma
             get { return LimitFonksiyon(x1, x2); }
         }
 
-        
         public double MatyasFormulSkor
         {
             get

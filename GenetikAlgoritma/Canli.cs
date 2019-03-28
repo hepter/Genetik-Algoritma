@@ -10,25 +10,7 @@ namespace GenetikAlgoritma
     {
         public Canli TurnuvaCifti{ get; set; }
         public Gen Gen { get; set; }
-
-
-        public double CezaPuani
-        {
-            get
-            {
-              return  Gen.PenaltySkor;
-            }
-        }
-
-
-        //public bool MatyasAralik(long z) // -10 ≤ z,y ≤ 10 
-        //{
-        //    int r1 = -10;
-        //    int r2 = 10;
-        //    return (r1 <= z && z <= r2);
-        //}
-       
-
+        
         public List<Canli> Olustur(int populasyon)
         {
             Random rnd = new Random(Guid.NewGuid().GetHashCode());

@@ -28,16 +28,6 @@ namespace GenetikAlgoritma
         {
             PopulasyonOlustur(pop);
         }
-        public GenetikDriver(List<Canli> canliList)
-        {
-            this.canliList = canliList;
-        }
-
-        public void AddRange(IEnumerable<Canli> collection)
-        {
-            canliList.AddRange(collection);
-        }
-
 
         private Canli Kiyasla(Canli c1,Canli c2)
         {
@@ -102,7 +92,7 @@ namespace GenetikAlgoritma
                 double offspring1a = rndDouble * canli.Gen.x1 + (1-rndDouble) * canli.TurnuvaCifti.Gen.x1;
                 double offspring1b = rndDouble * canli.Gen.x2 + (1-rndDouble)* canli.TurnuvaCifti.Gen.x2;
 
-                
+               
                 double offspring2a = (1-rndDouble) * canli.Gen.x1 + rndDouble * canli.TurnuvaCifti.Gen.x1;
                 double offspring2b = (1-rndDouble) * canli.Gen.x2 + rndDouble * canli.TurnuvaCifti.Gen.x2;
 

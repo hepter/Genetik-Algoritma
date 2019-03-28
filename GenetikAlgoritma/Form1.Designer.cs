@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(20D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(20D, 20D);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,12 +52,13 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -75,24 +76,24 @@
             // 
             this.chart1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Cross;
             this.chart1.BorderlineWidth = 3;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(-53, 303);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.MarkerBorderWidth = 2;
-            series2.Name = "Series1";
-            dataPoint3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            dataPoint3.BorderWidth = 2;
-            dataPoint3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataPoint4.CustomProperties = "DrawingStyle=Cylinder";
-            series2.Points.Add(dataPoint3);
-            series2.Points.Add(dataPoint4);
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.MarkerBorderWidth = 2;
+            series3.Name = "Series1";
+            dataPoint5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            dataPoint5.BorderWidth = 2;
+            dataPoint5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataPoint6.CustomProperties = "DrawingStyle=Cylinder";
+            series3.Points.Add(dataPoint5);
+            series3.Points.Add(dataPoint6);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(1188, 341);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
@@ -104,7 +105,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(280, 86);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 56);
+            this.button1.Size = new System.Drawing.Size(316, 54);
             this.button1.TabIndex = 6;
             this.button1.Text = "HESAPLA";
             this.button1.UseVisualStyleBackColor = true;
@@ -153,7 +154,7 @@
             // numericUpDown5
             // 
             this.numericUpDown5.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown5.Location = new System.Drawing.Point(173, 208);
+            this.numericUpDown5.Location = new System.Drawing.Point(163, 206);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -172,7 +173,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(30, 119);
+            this.label3.Location = new System.Drawing.Point(20, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 20);
             this.label3.TabIndex = 3;
@@ -182,7 +183,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(34, 165);
+            this.label4.Location = new System.Drawing.Point(24, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 20);
             this.label4.TabIndex = 3;
@@ -191,9 +192,9 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown4.Location = new System.Drawing.Point(173, 162);
+            this.numericUpDown4.Location = new System.Drawing.Point(163, 160);
             this.numericUpDown4.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -206,7 +207,7 @@
             this.numericUpDown4.Size = new System.Drawing.Size(70, 27);
             this.numericUpDown4.TabIndex = 4;
             this.numericUpDown4.Value = new decimal(new int[] {
-            100,
+            150,
             0,
             0,
             0});
@@ -214,7 +215,7 @@
             // numericUpDown6
             // 
             this.numericUpDown6.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown6.Location = new System.Drawing.Point(173, 254);
+            this.numericUpDown6.Location = new System.Drawing.Point(163, 252);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -233,7 +234,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(93, 211);
+            this.label5.Location = new System.Drawing.Point(83, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 20);
             this.label5.TabIndex = 3;
@@ -243,21 +244,21 @@
             // 
             this.numericUpDown2.DecimalPlaces = 2;
             this.numericUpDown2.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown2.Location = new System.Drawing.Point(173, 70);
+            this.numericUpDown2.Location = new System.Drawing.Point(163, 68);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(70, 27);
             this.numericUpDown2.TabIndex = 4;
             this.numericUpDown2.Value = new decimal(new int[] {
-            7,
+            75,
             0,
             0,
-            65536});
+            0});
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(13, 73);
+            this.label2.Location = new System.Drawing.Point(3, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 20);
             this.label2.TabIndex = 3;
@@ -267,21 +268,21 @@
             // 
             this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown3.Location = new System.Drawing.Point(173, 116);
+            this.numericUpDown3.Location = new System.Drawing.Point(163, 114);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(70, 27);
             this.numericUpDown3.TabIndex = 4;
             this.numericUpDown3.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
-            131072});
+            0});
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(31, 257);
+            this.label10.Location = new System.Drawing.Point(21, 255);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(136, 20);
             this.label10.TabIndex = 3;
@@ -290,12 +291,17 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown1.Location = new System.Drawing.Point(173, 24);
+            this.numericUpDown1.Location = new System.Drawing.Point(163, 22);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(70, 27);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
-            48,
+            60,
             0,
             0,
             0});
@@ -304,7 +310,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(66, 27);
+            this.label1.Location = new System.Drawing.Point(56, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 1;
@@ -312,6 +318,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.numericUpDown1);
             this.groupBox1.Controls.Add(this.label10);
@@ -331,6 +339,26 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ayarlar";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(233, 117);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 20);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "%";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(233, 70);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 20);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "%";
             // 
             // groupBox2
             // 
@@ -387,23 +415,12 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(451, 103);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1441, 630);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -456,7 +473,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 

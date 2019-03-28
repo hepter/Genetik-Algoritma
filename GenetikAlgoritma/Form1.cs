@@ -21,50 +21,72 @@ namespace GenetikAlgoritma
             InitializeComponent();
         }
 
+        private bool isRunning = false;
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-            this.chart1.Series.Clear();
- 
-            this.chart1.Titles.Add("Total Income");
- 
-            Series series = this.chart1.Series.Add("Total Income");
-            series.BorderWidth = 10;
-            
-            series.ChartType = SeriesChartType.Spline;
-            series.Points.AddXY(1, 100);
-            series.Points.AddXY(2, 300);
-            series.Points.AddXY(3, 800);
-            series.Points.AddXY(4, 800);
-            series.Points.AddXY(5, 800);
-            series.Points.AddXY(9, 800);
-
         }
-
-       
-
-        public List<int> TurnuvaSecimi(List<int> list)
+        public void TabloRender(List<Canli> c,int cap=10,Color? color=null,Image img=null)
         {
-            Random rnd= new Random(Guid.NewGuid().GetHashCode());
-            return null;
+            bool check = img == null;
+
+            if (check)
+                 img = Properties.Resources.matyas;
+            
+            foreach (Canli canli in c)
+            {
+                int x = (int)((double) ((canli.Gen.x1 + 10) / 20) * (img.Width - 50));
+                int y = (int)((double) ((canli.Gen.x2 + 10) / 20) * (img.Height - 60));
+                drawPoint(x+25,y+30,img,cap,color);
+            }
+            if (check)
+                pictureBox1.Image = img;
+
         }
         Random rndColor = new Random(Guid.NewGuid().GetHashCode());
-
-        public void drawPoint(int x, int y,Image img)
+        public void drawPoint(int x, int y, Image img, int radius = 10, Color? color=null)
         {
             Graphics g = Graphics.FromImage(img);
-            SolidBrush brush = new SolidBrush(Color.FromArgb(rndColor.Next(0,255),rndColor.Next(0,255),rndColor.Next(0,255)));
+            SolidBrush brush;
+            if (color.HasValue)
+            {
+                 brush = new SolidBrush(color.Value);
+            }
+            else
+            {
+                brush = new SolidBrush(Color.FromArgb(rndColor.Next(0,255),rndColor.Next(0,255),rndColor.Next(0,255)));
+            }
+          
             Point dPoint = new Point(x, (img.Height - y));
             dPoint.X = dPoint.X - 2;
             dPoint.Y = dPoint.Y - 2;
 
-            g.FillCircle(brush,dPoint.X, dPoint.Y, 8);
-            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, 8);
+           
+            g.FillCircle(brush,dPoint.X, dPoint.Y, radius+4);
+            g.FillCircle(new SolidBrush(Color.White),dPoint.X, dPoint.Y, radius);
+            
+            g.FillCircle(new SolidBrush(Color.Black),dPoint.X, dPoint.Y, 3);
+            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, radius);
             g.Dispose();
         }
 
+        private bool ToggleKontrol()
+        {
+            if (isRunning)
+            {
+                isRunning = false;
+                button1.Text = "HESAPLA";
+            }
+            else
+            {
+                button1.Text = "Durdur";
+                isRunning = true;
+            }
+
+            return isRunning;
+        }
         private Series GenSeries()
         {
+           
             flowLayoutPanel1.Controls.Clear();
             label11.Text = "Toplam:0";
             pictureBox1.Image = Properties.Resources.matyas;
@@ -78,95 +100,81 @@ namespace GenetikAlgoritma
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Series series = GenSeries();
+            if(!ToggleKontrol()) return;
             
-            List<Canli> elitizm=new List<Canli>();
-            GenetikDriver GenDrv = new GenetikDriver((int) numericUpDown1.Value);
-            GenDrv.elitPop = (int) numericUpDown5.Value;
+            Series series = GenSeries();
 
+            int popSayi = (int)numericUpDown1.Value;
+            int elitPop = (int)numericUpDown5.Value;
+            int iterasyon = (int) numericUpDown4.Value;
+            double carazlamaOran = (double) numericUpDown2.Value / 100;
+            double mutasyonOran = (double) numericUpDown3.Value / 100;
+            int ms = (int)numericUpDown6.Value;
+            
+            GenetikDriver GenDrv = new GenetikDriver(popSayi);
+            GenDrv.elitPop = elitPop;
+
+            
+            
             chart1.SuspendLayout();
-            for (int j = 0; j < (int)numericUpDown4.Value; j++)
+            for (int j = 0; j <iterasyon; j++)
             { 
                 
                 GenDrv.Elitizm();
                 GenDrv.TurnuvaCiftiOlustur();
-                GenDrv.Caprazla((double)numericUpDown2.Value);
-                GenDrv.Mutasyon((double)numericUpDown3.Value);
-                
+                GenDrv.Caprazla(carazlamaOran);
+                GenDrv.Mutasyon(mutasyonOran);
 
-                //GenDrv.AddRange(elitizm);
 
                 ElitizmFlowLayoutEkle(GenDrv.BestCanli());
-                TabloRender(GenDrv.populasyonList);
+                //TabloRender(GenDrv.populasyonList);
+                Image img = Properties.Resources.matyas;
+                TabloRender(GenDrv.canliList,10,Color.Black,img);
+                TabloRender(GenDrv.elitList,10,Color.Red,img);
+                pictureBox1.Image = img;
+                
+
                 series.Points.AddXY(j, GenDrv.BestCanli().Gen.MatyasFormulSkor * 1000);
-
-
-               // elitizm=GenDrv.Elitizm((int)numericUpDown5.Value);
-
                 label8.Text = GenDrv.BestCanli().Gen.x1.ToString();
                 label9.Text = GenDrv.BestCanli().Gen.x2.ToString();
-                bekle((int)numericUpDown6.Value);
+
+                bekle(ms);
+
+                if (!isRunning) break;
+                if(j==iterasyon-1) ToggleKontrol();
             }
             chart1.ResumeLayout();
         }
         
-        public void TabloRender(List<Canli> c)
-        {
-            Image img = Properties.Resources.matyas;
-           
-            foreach (Canli canli in c)
-            {
-                int x = (int)((double) ((canli.Gen.x1 + 10) / 20) * (img.Width - 50));
-                int y = (int)((double) ((canli.Gen.x2 + 10) / 20) * (img.Height - 60));
-                drawPoint(x+25,y+30,img);
-            }
-            pictureBox1.Image = img;
-
-        }
+       
         public bool ElitizmFlowLayoutEkle(Canli c)
         {
             foreach (var elitizm in flowLayoutPanel1.Controls.OfType<ElitizmComponent>())
                 if (c.Gen.MatyasFormulSkor == elitizm.Canli.Gen.MatyasFormulSkor) 
                     return false;
+
             label11.Text = "Toplam:"+ (flowLayoutPanel1.Controls.Count + 1);
-            flowLayoutPanel1.Controls.Add(new ElitizmComponent(c,flowLayoutPanel1.Controls.Count+1));
+            var comp = new ElitizmComponent(c, flowLayoutPanel1.Controls.Count + 1);
+            
+            comp.pictureBox2.Click += (s, arg) =>
+            {
+                var canli = ((s as Control).Parent.Parent.Parent as ElitizmComponent).Canli ;
+                var list = new List<Canli>();
+                list.Add(canli);
+                TabloRender(list,20);
+            };
+            flowLayoutPanel1.Controls.Add(comp);
             return true;
         }
         Stopwatch BekleWatch;
         public void bekle(int ms)
         {
-            if (ms==0)
-                return;
+            if (ms==0) return;
             BekleWatch= Stopwatch.StartNew();
             while (ms>BekleWatch.ElapsedMilliseconds)
-            {
                 Application.DoEvents();
-            }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private async void button2_Click_1(object sender, EventArgs e)
-        {
-            
-            
-            List<Canli> liste = new Canli().Olustur((int)numericUpDown1.Value);
-            GenetikDriver t= new GenetikDriver(liste);
-            liste = t.TurnuvaCiftiOlustur();
-            liste = t.Caprazla((double)numericUpDown2.Value);
-            liste = t.Mutasyon((double)numericUpDown3.Value);
-            TabloRender(liste);
-          
-           
-        }
     }
     public static class GraphicsExtensions
     {
