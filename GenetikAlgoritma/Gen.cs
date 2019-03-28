@@ -38,8 +38,8 @@ namespace GenetikAlgoritma
             }
         }
         double LimitFonksiyon(double x,double y)
-        {
-            return (x - y) < 0 ? -(x - y) : (x - y);
+        { 
+            return Math.Abs(x - y) ;
         }
     }
 }
