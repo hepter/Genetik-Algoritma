@@ -29,7 +29,6 @@ namespace GenetikAlgoritma
             get { return LimitFonksiyon(x1, x2); }
         }
 
-        
         public double MatyasFormulSkor
         {
             get
@@ -39,8 +38,8 @@ namespace GenetikAlgoritma
             }
         }
         double LimitFonksiyon(double x,double y)
-        {
-            return (x - y) < 0 ? -(x - y) : (x - y);
+        { 
+            return Math.Abs(x - y) ;
         }
     }
 }
