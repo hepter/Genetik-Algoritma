@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -49,76 +50,80 @@ namespace GenetikAlgoritma
         }
         Random rndColor = new Random(Guid.NewGuid().GetHashCode());
 
-        public void drawPoint(int x, int y)
+        public void drawPoint(int x, int y,Image img)
         {
-            Graphics g = Graphics.FromHwnd(pictureBox1.Handle);
-
+            Graphics g = Graphics.FromImage(img);
             SolidBrush brush = new SolidBrush(Color.FromArgb(rndColor.Next(0,255),rndColor.Next(0,255),rndColor.Next(0,255)));
-           
-            Point dPoint = new Point(x, (pictureBox1.Height - y));
+            Point dPoint = new Point(x, (img.Height - y));
             dPoint.X = dPoint.X - 2;
             dPoint.Y = dPoint.Y - 2;
 
-            g.FillCircle(brush,dPoint.X, dPoint.Y, 3);
-            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, 3);
-            //Rectangle rect = new Rectangle(dPoint, new Size(4, 4));
-            //g.FillRectangle(brush, rect);
+            g.FillCircle(brush,dPoint.X, dPoint.Y, 8);
+            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, 8);
             g.Dispose();
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private Series GenSeries()
         {
             flowLayoutPanel1.Controls.Clear();
             label11.Text = "Toplam:0";
             pictureBox1.Image = Properties.Resources.matyas;
-
-            List<Canli> liste = new Canli().Olustur((int)numericUpDown1.Value);
-            List<Canli> elitizm=new List<Canli>();
-           
             this.chart1.Series.Clear();
             Series series = this.chart1.Series.Add("Sonuclar");
             series.ChartType = SeriesChartType.Spline;
             series.BorderWidth = 3;
             series.Color = Color.Black;
+            return series;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Series series = GenSeries();
+            
+            List<Canli> elitizm=new List<Canli>();
+            GenetikDriver GenDrv = new GenetikDriver((int) numericUpDown1.Value);
+            GenDrv.elitPop = (int) numericUpDown5.Value;
+
             chart1.SuspendLayout();
             for (int j = 0; j < (int)numericUpDown4.Value; j++)
             { 
                 
-                Turnuva t = new Turnuva(liste);
-                liste = t.Olustur();
-                liste = t.Caprazla(liste,(double)numericUpDown2.Value);
-                liste = t.Mutasyon(liste,(double)numericUpDown3.Value);
-                liste.AddRange(elitizm);
-                Canli canli = t.BestCanli(liste);
+                GenDrv.Elitizm();
+                GenDrv.TurnuvaCiftiOlustur();
+                GenDrv.Caprazla((double)numericUpDown2.Value);
+                GenDrv.Mutasyon((double)numericUpDown3.Value);
                 
-                if (ElitizmListeyeEkle(canli))
-                {
-                   Render(liste);
-                } 
-                series.Points.AddXY(j, canli.Gen.MatyasFormulSkor * 10);
 
-                elitizm=liste.OrderBy(a=>a.Gen.MatyasFormulSkor).Take((int)numericUpDown5.Value).ToList();
-                liste=liste.OrderBy(a=>a.Gen.MatyasFormulSkor).Reverse().Take(liste.Count()-(int)numericUpDown5.Value).ToList();
-                label8.Text = canli.Gen.x1.ToString();
-                label9.Text = canli.Gen.x2.ToString();
+                //GenDrv.AddRange(elitizm);
+
+                ElitizmFlowLayoutEkle(GenDrv.BestCanli());
+                TabloRender(GenDrv.populasyonList);
+                series.Points.AddXY(j, GenDrv.BestCanli().Gen.MatyasFormulSkor * 1000);
+
+
+               // elitizm=GenDrv.Elitizm((int)numericUpDown5.Value);
+
+                label8.Text = GenDrv.BestCanli().Gen.x1.ToString();
+                label9.Text = GenDrv.BestCanli().Gen.x2.ToString();
                 bekle((int)numericUpDown6.Value);
             }
             chart1.ResumeLayout();
         }
-        Stopwatch w;
-        public void Render(List<Canli> c)
+        
+        public void TabloRender(List<Canli> c)
         {
+            Image img = Properties.Resources.matyas;
            
-            pictureBox1.SuspendLayout();
             foreach (Canli canli in c)
             {
-                int x = (int)((double) ((canli.Gen.x1 + 10) / 20) * (pictureBox1.Width - 50));
-                int y = (int)((double) ((canli.Gen.x2 + 10) / 20) * (pictureBox1.Height - 60));
-                drawPoint(x+25,y+30);
+                int x = (int)((double) ((canli.Gen.x1 + 10) / 20) * (img.Width - 50));
+                int y = (int)((double) ((canli.Gen.x2 + 10) / 20) * (img.Height - 60));
+                drawPoint(x+25,y+30,img);
             }
-            pictureBox1.ResumeLayout();
+            pictureBox1.Image = img;
 
         }
-        public bool ElitizmListeyeEkle(Canli c)
+        public bool ElitizmFlowLayoutEkle(Canli c)
         {
             foreach (var elitizm in flowLayoutPanel1.Controls.OfType<ElitizmComponent>())
                 if (c.Gen.MatyasFormulSkor == elitizm.Canli.Gen.MatyasFormulSkor) 
@@ -127,12 +132,13 @@ namespace GenetikAlgoritma
             flowLayoutPanel1.Controls.Add(new ElitizmComponent(c,flowLayoutPanel1.Controls.Count+1));
             return true;
         }
+        Stopwatch BekleWatch;
         public void bekle(int ms)
         {
             if (ms==0)
                 return;
-            w= Stopwatch.StartNew();
-            while (ms>w.ElapsedMilliseconds)
+            BekleWatch= Stopwatch.StartNew();
+            while (ms>BekleWatch.ElapsedMilliseconds)
             {
                 Application.DoEvents();
             }
@@ -148,9 +154,18 @@ namespace GenetikAlgoritma
             
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private async void button2_Click_1(object sender, EventArgs e)
         {
-            drawPoint(25,30);
+            
+            
+            List<Canli> liste = new Canli().Olustur((int)numericUpDown1.Value);
+            GenetikDriver t= new GenetikDriver(liste);
+            liste = t.TurnuvaCiftiOlustur();
+            liste = t.Caprazla((double)numericUpDown2.Value);
+            liste = t.Mutasyon((double)numericUpDown3.Value);
+            TabloRender(liste);
+          
+           
         }
     }
     public static class GraphicsExtensions

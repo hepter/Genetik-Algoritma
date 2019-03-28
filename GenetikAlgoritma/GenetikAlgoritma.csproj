@@ -68,7 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Turnuva.cs" />
+    <Compile Include="GenetikDriver.cs" />
     <EmbeddedResource Include="ElitizmComponent.resx">
       <DependentUpon>ElitizmComponent.cs</DependentUpon>
     </EmbeddedResource>

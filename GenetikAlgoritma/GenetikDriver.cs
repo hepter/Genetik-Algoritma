@@ -6,13 +6,38 @@ using System.Threading.Tasks;
 
 namespace GenetikAlgoritma
 {
-    class Turnuva
+    class GenetikDriver
     {
-        private List<Canli> canliList;
-        public Turnuva(List<Canli> canliList)
+        public List<Canli> canliList { get; set; }
+        public List<Canli> elitList { get; set; }
+        public int elitPop { get; set; }
+
+        public List<Canli> populasyonList
+        {
+            get
+            {
+                List<Canli> list= new List<Canli>();
+                list.AddRange(canliList);
+                if(elitList!=null)
+                    list.AddRange(elitList);
+                return list;
+            }
+        }
+
+        public GenetikDriver(int pop)
+        {
+            PopulasyonOlustur(pop);
+        }
+        public GenetikDriver(List<Canli> canliList)
         {
             this.canliList = canliList;
         }
+
+        public void AddRange(IEnumerable<Canli> collection)
+        {
+            canliList.AddRange(collection);
+        }
+
 
         private Canli Kiyasla(Canli c1,Canli c2)
         {
@@ -26,7 +51,14 @@ namespace GenetikAlgoritma
                 c = c1.Gen.MatyasFormulSkor > c2.Gen.MatyasFormulSkor ? c2 : c1;
             return c;
         }
-        public List<Canli> Olustur()
+
+        public List<Canli> PopulasyonOlustur(int pop)
+        {
+            List<Canli> liste = new Canli().Olustur(pop);
+            canliList = liste;
+            return liste;
+        }
+        public List<Canli> TurnuvaCiftiOlustur()
         {
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
             List<Canli> TurnuvaList=new List<Canli>();
@@ -46,12 +78,12 @@ namespace GenetikAlgoritma
                 v2 = canliList[rndIndis2];
                 TurnuvaList[i].TurnuvaCifti = Kiyasla(v1,v2);
             }
-
+            canliList = TurnuvaList;
             return TurnuvaList;
         }
 
 
-        public List<Canli> Caprazla(List<Canli> canliList,double ihtimal)
+        public List<Canli> Caprazla(double ihtimal)
         {
             
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
@@ -91,11 +123,11 @@ namespace GenetikAlgoritma
                     }
                 });
             }
-
+            canliList = caprazlanmisList;
             return caprazlanmisList;
         }
 
-        public List<Canli> Mutasyon(List<Canli> canliList,double ihtimal)
+        public List<Canli> Mutasyon(double ihtimal)
         {
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
             List<Canli> mutasyonList = new List<Canli>();
@@ -115,14 +147,28 @@ namespace GenetikAlgoritma
                 });
             }
 
+            canliList = mutasyonList;
             return mutasyonList;
         }
 
 
 
-        public Canli BestCanli(List<Canli> canliList)
+        public Canli BestCanli()
         {
-            return canliList.OrderBy(a=>a.Gen.MatyasFormulSkor).FirstOrDefault();
+            return populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).FirstOrDefault();
+        }
+
+        public List<Canli> Elitizm(int elitPop)
+        {
+            List<Canli>  elitizm=populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).Take(elitPop).ToList();
+            canliList=populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).Reverse().Take(populasyonList.Count()-elitPop).ToList();
+            elitList = elitizm;
+            return elitizm;
+        }
+        
+        public List<Canli> Elitizm()
+        {
+            return Elitizm(elitPop);
         }
     }
 }
