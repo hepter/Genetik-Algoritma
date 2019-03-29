@@ -26,7 +26,6 @@ namespace GenetikAlgoritma
             label8.Text = c.Gen.x1.ToString();
             label9.Text = c.Gen.x2.ToString();
             label3.Text = c.Gen.MatyasFormulSkor.ToString();
-            label4.Text = c.Gen.PenaltySkor.ToString();
             Renklendir();
         }
 

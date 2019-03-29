@@ -12,9 +12,9 @@ namespace GenetikAlgoritma
         public double x1 { get; set; }
         public double x2 { get; set; }
 
+        Random rnd = new Random(Guid.NewGuid().GetHashCode());
         public Gen()
         {
-            Random rnd = new Random(Guid.NewGuid().GetHashCode());
             x1 = rnd.NextDouble() * 20 - 10;
             x2 = rnd.NextDouble() * 20 - 10;
         }
@@ -24,22 +24,13 @@ namespace GenetikAlgoritma
             this.x2 = x2;
         }
 
-        public double PenaltySkor
-        {
-            get { return LimitFonksiyon(x1, x2); }
-        }
-
         public double MatyasFormulSkor
         {
             get
             {
-                double result = 0.26 * ((x1 * x1)+ (x2 * x2)) - 0.48 * x1 * x2;
+                double result = (0.26 * (Math.Pow(x1, 2) + Math.Pow(x2, 2))) - (0.48 * x1 * x2);
                 return result;
             }
-        }
-        double LimitFonksiyon(double x,double y)
-        { 
-            return Math.Abs(x - y) ;
         }
     }
 }

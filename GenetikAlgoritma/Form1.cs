@@ -49,7 +49,8 @@ namespace GenetikAlgoritma
             SolidBrush brush;
             if (color.HasValue)
             {
-                 brush = new SolidBrush(color.Value);
+                var colorTemp = Color.FromArgb((int)numericUpDown7.Value,color.Value.R,color.Value.G,color.Value.B);
+                brush = new SolidBrush(colorTemp);
             }
             else
             {
@@ -62,10 +63,10 @@ namespace GenetikAlgoritma
 
            
             g.FillCircle(brush,dPoint.X, dPoint.Y, radius+4);
-            g.FillCircle(new SolidBrush(Color.White),dPoint.X, dPoint.Y, radius);
+          //  g.FillCircle(new SolidBrush(Color.White),dPoint.X, dPoint.Y, radius);
             
-            g.FillCircle(new SolidBrush(Color.Black),dPoint.X, dPoint.Y, 3);
-            g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, radius);
+            g.FillCircle(new SolidBrush(Color.Black),dPoint.X, dPoint.Y, 2);
+           // g.DrawCircle(new Pen(brush),dPoint.X, dPoint.Y, radius);
             g.Dispose();
         }
 
@@ -92,9 +93,11 @@ namespace GenetikAlgoritma
             pictureBox1.Image = Properties.Resources.matyas;
             this.chart1.Series.Clear();
             Series series = this.chart1.Series.Add("Sonuclar");
-            series.ChartType = SeriesChartType.Spline;
+            chart1.IsSoftShadows = false;
+            
+            series.ChartType = SeriesChartType.Area;
             series.BorderWidth = 3;
-            series.Color = Color.Black;
+            series.Color = Color.IndianRed;
             return series;
         }
 
@@ -115,26 +118,26 @@ namespace GenetikAlgoritma
             GenDrv.elitPop = elitPop;
 
             
-            
+            Image img = Properties.Resources.matyas;
             chart1.SuspendLayout();
             for (int j = 0; j <iterasyon; j++)
             { 
-                
+
                 GenDrv.Elitizm();
                 GenDrv.TurnuvaCiftiOlustur();
                 GenDrv.Caprazla(carazlamaOran);
                 GenDrv.Mutasyon(mutasyonOran);
-
+               
 
                 ElitizmFlowLayoutEkle(GenDrv.BestCanli());
                 //TabloRender(GenDrv.populasyonList);
-                Image img = Properties.Resources.matyas;
-                TabloRender(GenDrv.canliList,10,Color.Black,img);
-                TabloRender(GenDrv.elitList,10,Color.Red,img);
+               
+                TabloRender(GenDrv.canliList,10,colorDialog1.Color,img);
+                TabloRender(GenDrv.elitList,10,colorDialog2.Color,img);
                 pictureBox1.Image = img;
-                
 
-                series.Points.AddXY(j, GenDrv.BestCanli().Gen.MatyasFormulSkor * 1000);
+                var eniyiSkor = GenDrv.BestCanli().Gen.MatyasFormulSkor*10000;
+                series.Points.AddXY(j, eniyiSkor);
                 label8.Text = GenDrv.BestCanli().Gen.x1.ToString();
                 label9.Text = GenDrv.BestCanli().Gen.x2.ToString();
 
@@ -175,6 +178,24 @@ namespace GenetikAlgoritma
                 Application.DoEvents();
         }
 
+        private void buttonClr1_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if ( colorDialog1.ShowDialog()==DialogResult.OK)
+            {
+                btn.BackColor = colorDialog1.Color;
+            }
+        }
+
+        private void buttonClr2_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (colorDialog2.ShowDialog()==DialogResult.OK)
+            {
+                btn.BackColor = colorDialog2.Color;
+            }
+
+        }
     }
     public static class GraphicsExtensions
     {
@@ -192,5 +213,5 @@ namespace GenetikAlgoritma
                 radius + radius, radius + radius);
         }
     }
-   
+
 }

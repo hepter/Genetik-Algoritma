@@ -32,13 +32,7 @@ namespace GenetikAlgoritma
         private Canli Kiyasla(Canli c1,Canli c2)
         {
             Canli c= new Canli();
-
-            if (c1.Gen.PenaltySkor > c2.Gen.PenaltySkor)
-                c = c2;
-            else if (c1.Gen.PenaltySkor < c2.Gen.PenaltySkor)
-                c = c1;
-            else
-                c = c1.Gen.MatyasFormulSkor > c2.Gen.MatyasFormulSkor ? c2 : c1;
+            c = c1.Gen.MatyasFormulSkor > c2.Gen.MatyasFormulSkor ? c2 : c1;
             return c;
         }
 
@@ -145,7 +139,10 @@ namespace GenetikAlgoritma
 
         public Canli BestCanli()
         {
-            return populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).FirstOrDefault();
+            var c = populasyonList.OrderBy(a => a.Gen.MatyasFormulSkor).FirstOrDefault();
+            Console.WriteLine("En iyi Canlı:"+c.Gen.MatyasFormulSkor);
+            return c;
+          
         }
 
         public List<Canli> Elitizm(int elitPop)
@@ -153,6 +150,7 @@ namespace GenetikAlgoritma
             List<Canli>  elitizm=populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).Take(elitPop).ToList();
             canliList=populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).Reverse().Take(populasyonList.Count()-elitPop).ToList();
             elitList = elitizm;
+            Console.WriteLine("En iyi Fonsiyon:"+populasyonList.OrderBy(a=>a.Gen.MatyasFormulSkor).FirstOrDefault().Gen.MatyasFormulSkor);
             return elitizm;
         }
         
