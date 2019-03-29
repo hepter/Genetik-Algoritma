@@ -3,24 +3,24 @@
 
 
 #### Genetik-Algoritma Arayüz
-[Arayüz](/gui.png)
+![Arayüz](/gui.png)
 
 
 
 
-####Matyas Function
-[Matyas Function](https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Matyas_function.pdf/page1-1200px-Matyas_function.pdf.jpg)
+#### Matyas Function
+![Matyas Function](https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Matyas_function.pdf/page1-1200px-Matyas_function.pdf.jpg)
 
-##Uygulanması
+## Uygulanması
 
 Verilen parametrelere göre yakınsama grafiği çizdirilir ve popülasyon tabloya render edilerek görüntülenmesi sağlanır.
 
-####Formul
+#### Formul
 ```
 f(X)=0.26(x21+x22)−0.48x1x2
 ```
 
-####Search Domain
+#### Search Domain
 ```
 −10≤xi≤10 , i=1,2
 fmin(X∗)=0
