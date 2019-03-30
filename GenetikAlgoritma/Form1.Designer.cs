@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(20D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(20D, 20D);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -102,24 +102,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Cross;
             this.chart1.BorderlineWidth = 3;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(-56, 3);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.MarkerBorderWidth = 2;
-            series2.Name = "Series1";
-            dataPoint3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            dataPoint3.BorderWidth = 2;
-            dataPoint3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataPoint4.CustomProperties = "DrawingStyle=Cylinder";
-            series2.Points.Add(dataPoint3);
-            series2.Points.Add(dataPoint4);
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.MarkerBorderWidth = 2;
+            series3.Name = "Series1";
+            dataPoint5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            dataPoint5.BorderWidth = 2;
+            dataPoint5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataPoint6.CustomProperties = "DrawingStyle=Cylinder";
+            series3.Points.Add(dataPoint5);
+            series3.Points.Add(dataPoint6);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(1164, 333);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
@@ -192,7 +192,7 @@
             this.numericUpDown5.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown5.TabIndex = 4;
             this.numericUpDown5.Value = new decimal(new int[] {
-            10,
+            25,
             0,
             0,
             0});
@@ -235,7 +235,7 @@
             this.numericUpDown4.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown4.TabIndex = 4;
             this.numericUpDown4.Value = new decimal(new int[] {
-            150,
+            200,
             0,
             0,
             0});
@@ -301,10 +301,10 @@
             this.numericUpDown3.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown3.TabIndex = 4;
             this.numericUpDown3.Value = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
-            0});
+            65536});
             // 
             // label10
             // 
@@ -329,7 +329,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
-            60,
+            1000,
             0,
             0,
             0});
