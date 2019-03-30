@@ -62,17 +62,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonClr2 = new System.Windows.Forms.Button();
+            this.buttonClr1 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.buttonClr1 = new System.Windows.Forms.Button();
-            this.buttonClr2 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
@@ -88,11 +88,11 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -181,15 +181,15 @@
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown5.Location = new System.Drawing.Point(185, 207);
+            this.numericUpDown5.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown5.Location = new System.Drawing.Point(176, 207);
             this.numericUpDown5.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
             this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown5.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown5.TabIndex = 4;
             this.numericUpDown5.Value = new decimal(new int[] {
             10,
@@ -219,8 +219,8 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown4.Location = new System.Drawing.Point(185, 161);
+            this.numericUpDown4.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown4.Location = new System.Drawing.Point(176, 161);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -232,7 +232,7 @@
             0,
             0});
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown4.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown4.TabIndex = 4;
             this.numericUpDown4.Value = new decimal(new int[] {
             150,
@@ -242,15 +242,15 @@
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown6.Location = new System.Drawing.Point(185, 253);
+            this.numericUpDown6.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown6.Location = new System.Drawing.Point(176, 253);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown6.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown6.TabIndex = 4;
             this.numericUpDown6.Value = new decimal(new int[] {
             1,
@@ -271,10 +271,10 @@
             // numericUpDown2
             // 
             this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown2.Location = new System.Drawing.Point(185, 69);
+            this.numericUpDown2.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown2.Location = new System.Drawing.Point(176, 69);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown2.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown2.TabIndex = 4;
             this.numericUpDown2.Value = new decimal(new int[] {
             75,
@@ -295,10 +295,10 @@
             // numericUpDown3
             // 
             this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown3.Location = new System.Drawing.Point(185, 115);
+            this.numericUpDown3.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown3.Location = new System.Drawing.Point(176, 115);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown3.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown3.TabIndex = 4;
             this.numericUpDown3.Value = new decimal(new int[] {
             3,
@@ -318,15 +318,15 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown1.Location = new System.Drawing.Point(185, 23);
+            this.numericUpDown1.Font = new System.Drawing.Font("Georgia", 9.2F);
+            this.numericUpDown1.Location = new System.Drawing.Point(176, 23);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            500,
+            500000,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown1.Size = new System.Drawing.Size(91, 25);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
             60,
@@ -373,7 +373,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(255, 118);
+            this.label13.Location = new System.Drawing.Point(267, 118);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(23, 20);
             this.label13.TabIndex = 1;
@@ -383,7 +383,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(255, 71);
+            this.label12.Location = new System.Drawing.Point(267, 71);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 20);
             this.label12.TabIndex = 1;
@@ -499,6 +499,102 @@
             this.panel1.Size = new System.Drawing.Size(276, 341);
             this.panel1.TabIndex = 10;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.buttonClr2);
+            this.groupBox4.Controls.Add(this.buttonClr1);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.numericUpDown7);
+            this.groupBox4.Font = new System.Drawing.Font("Georgia", 10.2F);
+            this.groupBox4.Location = new System.Drawing.Point(9, 140);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(258, 186);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Matyas Render";
+            // 
+            // buttonClr2
+            // 
+            this.buttonClr2.BackColor = System.Drawing.Color.Red;
+            this.buttonClr2.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonClr2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClr2.Location = new System.Drawing.Point(215, 102);
+            this.buttonClr2.Name = "buttonClr2";
+            this.buttonClr2.Size = new System.Drawing.Size(23, 23);
+            this.buttonClr2.TabIndex = 5;
+            this.buttonClr2.UseVisualStyleBackColor = false;
+            this.buttonClr2.Click += new System.EventHandler(this.buttonClr2_Click);
+            // 
+            // buttonClr1
+            // 
+            this.buttonClr1.BackColor = System.Drawing.Color.Black;
+            this.buttonClr1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonClr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClr1.ForeColor = System.Drawing.Color.Black;
+            this.buttonClr1.Location = new System.Drawing.Point(215, 68);
+            this.buttonClr1.Name = "buttonClr1";
+            this.buttonClr1.Size = new System.Drawing.Size(23, 23);
+            this.buttonClr1.TabIndex = 5;
+            this.buttonClr1.UseVisualStyleBackColor = false;
+            this.buttonClr1.Click += new System.EventHandler(this.buttonClr1_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label16.Location = new System.Drawing.Point(6, 103);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(112, 20);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Elitizm Renk:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.Location = new System.Drawing.Point(6, 69);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(96, 20);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Birey Renk:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.Location = new System.Drawing.Point(6, 31);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(130, 20);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Opaklık(0-255):";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.numericUpDown7.Location = new System.Drawing.Point(168, 29);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(70, 27);
+            this.numericUpDown7.TabIndex = 4;
+            this.numericUpDown7.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.pictureBox1);
@@ -535,102 +631,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1437, 662);
             this.tableLayoutPanel3.TabIndex = 11;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.buttonClr2);
-            this.groupBox4.Controls.Add(this.buttonClr1);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.numericUpDown7);
-            this.groupBox4.Font = new System.Drawing.Font("Georgia", 10.2F);
-            this.groupBox4.Location = new System.Drawing.Point(9, 140);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(258, 186);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Matyas Render";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.Location = new System.Drawing.Point(6, 31);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(130, 20);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Opaklık(0-255):";
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown7.Location = new System.Drawing.Point(168, 29);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(70, 27);
-            this.numericUpDown7.TabIndex = 4;
-            this.numericUpDown7.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // buttonClr1
-            // 
-            this.buttonClr1.BackColor = System.Drawing.Color.Black;
-            this.buttonClr1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonClr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClr1.ForeColor = System.Drawing.Color.Black;
-            this.buttonClr1.Location = new System.Drawing.Point(215, 68);
-            this.buttonClr1.Name = "buttonClr1";
-            this.buttonClr1.Size = new System.Drawing.Size(23, 23);
-            this.buttonClr1.TabIndex = 5;
-            this.buttonClr1.UseVisualStyleBackColor = false;
-            this.buttonClr1.Click += new System.EventHandler(this.buttonClr1_Click);
-            // 
-            // buttonClr2
-            // 
-            this.buttonClr2.BackColor = System.Drawing.Color.Red;
-            this.buttonClr2.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonClr2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClr2.Location = new System.Drawing.Point(215, 102);
-            this.buttonClr2.Name = "buttonClr2";
-            this.buttonClr2.Size = new System.Drawing.Size(23, 23);
-            this.buttonClr2.TabIndex = 5;
-            this.buttonClr2.UseVisualStyleBackColor = false;
-            this.buttonClr2.Click += new System.EventHandler(this.buttonClr2_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label15.Location = new System.Drawing.Point(6, 69);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(96, 20);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Birey Renk:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label16.Location = new System.Drawing.Point(6, 103);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(112, 20);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Elitizm Renk:";
-            // 
             // colorDialog2
             // 
             this.colorDialog2.Color = System.Drawing.Color.Red;
@@ -663,12 +663,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
